@@ -19,6 +19,11 @@ namespace NetLoggerInfrastructure.Extensions
             logger.Write(LoggerLevel.Fatal, message, args);
         }
 
+        public static void Fatal(this ILogger logger, string message, Exception ex)
+        {
+            logger.Write(LoggerLevel.Fatal, message + " Exception: " + ex.ToString());
+        }
+
         /// <summary>
         /// Вывести сообщение об ошибке
         /// </summary>
@@ -28,6 +33,11 @@ namespace NetLoggerInfrastructure.Extensions
         public static void Error(this ILogger logger, string message, params object[] args)
         {
             logger.Write(LoggerLevel.Error, message, args);
+        }
+
+        public static void Error(this ILogger logger, string message, Exception ex)
+        {
+            logger.Write(LoggerLevel.Error, message + " Exception: " + ex.ToString());
         }
 
         /// <summary>
