@@ -11,13 +11,13 @@ namespace NetLoggerInfrastructure.TestRunner
     {
         static void Main(string[] args)
         {
-            MultyLogger logger = new MultyLogger(new FileLogger(), new ConsoleLogger());
+            MultyLogger logger = new MultyLogger(new FileLogger(), new ConsoleLogger(),new WinAppEventLogLogger());
             logger.SetLevel(LoggerLevel.Debug);
-            logger.Info("Тестовое сообщение");
-            logger.Debug("Тестовое сообщение");
-            logger.Warning("Тестовое сообщение");
-            logger.Error("Тестовое сообщение");
-            logger.Fatal("Тестовое сообщение");
+            logger.Info("Test info message");
+            logger.Debug("Test Debug message");
+            logger.Warning("Test Warning message");
+            logger.Error("Test Error message");
+            logger.Fatal("TestFatalMessage");
             Console.ReadKey();
         }
     }
