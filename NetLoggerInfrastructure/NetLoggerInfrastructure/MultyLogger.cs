@@ -47,28 +47,12 @@ namespace NetLoggerInfrastructure
         {
             if (level > _currentLevel)
                 return;
-            
-            foreach (var logger in _loggers)
-            {
-                switch (level)
+
+            Parallel.ForEach(_loggers, logger =>
                 {
-                    case LoggerLevel.Fatal:
-                        logger.Write(LoggerLevel.Fatal, message, args);
-                        break;
-                    case LoggerLevel.Error:
-                        logger.Write(LoggerLevel.Error, message, args);
-                        break;
-                    case LoggerLevel.Warning:
-                        logger.Write(LoggerLevel.Warning, message, args);
-                        break;
-                    case LoggerLevel.Info:
-                        logger.Write(LoggerLevel.Info, message, args);
-                        break;
-                    case LoggerLevel.Debug:
-                        logger.Write(LoggerLevel.Debug, message, args);
-                        break;
+                    logger.Write(level, message, args);
                 }
-            }
+            );
         }
 
         /// <summary>
