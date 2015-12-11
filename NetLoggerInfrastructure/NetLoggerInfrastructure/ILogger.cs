@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace NetLoggerInfrastructure
 {
+
+    /// <summary>
+    /// Уровни логгирования
+    /// </summary>
     public enum LoggerLevel
     {
         Fatal = 0,
